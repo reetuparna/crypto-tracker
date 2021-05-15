@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { useTable } from 'react-table';
-
-
+import './table.css';
+import {cols} from './columns';
 /**
 * @author
 * @function Cointable
@@ -12,31 +12,7 @@ const Cointable = (props) => {
 
     const { coinData } = props;
 
-    const columns = React.useMemo(()=> [{  
-        Header: 'ID',  
-        accessor: 'id',
-       }
-       ,{  
-        Header: 'Symbol',  
-        accessor: 'symbol' ,
-       }
-       ,{  
-       Header: 'Name',  
-       accessor: 'name' ,
-       }
-       ,{  
-       Header: 'Image',  
-       accessor: 'image',
-       },
-       {  
-        Header: 'Current Price',  
-        accessor: 'current_price',
-        },
-        {  
-        Header: 'Rank',  
-        accessor: 'market_cap_rank',
-        }
-      ], []);
+    const columns = React.useMemo(()=> cols, []);
 
     const data = React.useMemo(() => coinData, []);
     
@@ -55,7 +31,7 @@ const Cointable = (props) => {
 
 
   return(
-    <div>{data!=undefined ?
+    <div className="tableContainer">{data!=undefined ?
         
         <table {...getTableProps()}>
             <thead>

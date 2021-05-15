@@ -1,0 +1,16 @@
+.tableContainer{
+    margin: 10%;
+}
+
+table{
+    width: 90%;
+    margin: 50px;
+    border-radius: 0.75%;
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 8%);
+}
+tr{
+    height: 55px;
+    width: 100%;
+    
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 8%);
+}

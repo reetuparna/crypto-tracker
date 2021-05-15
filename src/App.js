@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import Cointable from './components/table';
 import axios from 'axios';
+import Header from './components/header/header';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      
+      <Header />
       {coins.length==0?<p></p>:<Cointable coinData={coins}/>}
       
     </div>

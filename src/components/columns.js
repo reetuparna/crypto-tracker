@@ -1,7 +1,15 @@
-export const columns = [{  
-    Header: 'ID',  
-    accessor: 'id',
-   }
+export const cols = [
+    {  
+        Header: 'Image',  
+        accessor: 'image',
+        Cell: ({ cell: { value } }) => (
+            <img
+              src={value}
+              width={30}
+            />
+          )
+        },
+    
    ,{  
     Header: 'Symbol',  
     accessor: 'symbol' ,
@@ -10,10 +18,7 @@ export const columns = [{
    Header: 'Name',  
    accessor: 'name' ,
    }
-   ,{  
-   Header: 'Image',  
-   accessor: 'image',
-   },
+   ,
    {  
     Header: 'Current Price',  
     accessor: 'current_price',
