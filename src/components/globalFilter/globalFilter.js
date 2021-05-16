@@ -7,17 +7,12 @@ import './globalFilter.css';
 **/
 
 const GlobalFilter = ({filter, setFilter}) => {
-
   return(
     <div className='search'>
-
-        <BsSearch />
-        
-        <input className="searchInput" value={filter || ''} 
-            onChange = {e => setFilter(e.target.value)} />
+      <BsSearch />
+      <input placeholder='Search...' className="searchInput" value={filter || ''} onChange = {e => setFilter(e.target.value)} />
     </div>
    )
-
- }
+}
 
 export default GlobalFilter

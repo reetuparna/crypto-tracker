@@ -27,3 +27,10 @@ tr:hover {
 .sortIcon{
     position: absolute;
 }
+
+.filter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}

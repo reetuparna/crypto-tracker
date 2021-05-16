@@ -7,24 +7,27 @@ import Header from './components/header/header';
 function App() {
 
   const [coins, setCoins] = useState([]);
+  const [currency, setCurrency] = useState('USD');
 
   useEffect(() => {
-
            axios
-          .get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false')
+          .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=30&page=1&sparkline=false`)
           .then(res => {
             setCoins(res.data);
-            console.log(res.data);
+            console.log(coins);
           })
           .catch(error => console.log(error));
 
-  }, []);
+  }, [currency]);
+
+  function handleChange(newValue) {
+    setCurrency(newValue);
+  }
 
   return (
     <div className="App">
       <Header />
-      {coins.length==0?<p></p>:<Cointable coinData={coins}/>}
-      
+      {coins.length===0?<p></p>:<Cointable coinData={coins} currency={currency} onChange={handleChange}/>}
     </div>
   );
 }
