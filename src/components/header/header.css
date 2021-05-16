@@ -21,3 +21,8 @@
     padding-right: 16px;
     font-size: 14px;
 }
+
+.nav-item:hover{
+    color: #42576b;
+    cursor: pointer;
+}

@@ -1,8 +1,11 @@
 import React from 'react';
 
-import { useTable } from 'react-table';
+import { useGlobalFilter, useSortBy, useTable } from 'react-table';
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+
 import './table.css';
 import {cols} from './columns';
+import GlobalFilter from './globalFilter/globalFilter';
 /**
 * @author
 * @function Cointable
@@ -10,59 +13,81 @@ import {cols} from './columns';
 
 const Cointable = (props) => {
 
-    const { coinData } = props;
+    const { coinData, currency } = props;
 
     const columns = React.useMemo(()=> cols, []);
 
-    const data = React.useMemo(() => coinData, []);
+    const data = React.useMemo(() => coinData, [coinData]);
     
-    const tableInstance = useTable({
-        columns,
-        data
-    })
-    
-  const {
+    const {
       getTableProps,
       getTableBodyProps,
       headerGroups,
       rows,
       prepareRow,
-  } = tableInstance 
+      state,
+      setGlobalFilter,
+    } = useTable(
+        {
+            columns,
+            data
+        }, 
+        useGlobalFilter,
+        useSortBy
+    );
 
+    const { globalFilter } = state;
 
-  return(
-    <div className="tableContainer">{data!=undefined ?
-        
-        <table {...getTableProps()}>
-            <thead>
-            { headerGroups.map((headerGroup) => (
-                <tr {...headerGroup.getHeaderGroupProps()}> 
-                {
-                    headerGroup.headers.map((column) => (
-                        <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                    ))
-                }
-            </tr>
-            ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-            {rows.map(row => {
-                prepareRow(row)
-                return (
-                    <tr {...row.getRowProps()}>
-                        {row.cells.map(cell => {
-                            return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                        })}
+    function handleChange() {
+        const newValue = currency==='USD'?'INR':'USD';
+        props.onChange(newValue);
+    }
+
+    return(
+
+        <div className="tableContainer">{
+            data!==undefined ?
+            <> 
+                <div className='filter-wrapper'>
+                    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+                    <button onClick={handleChange}> {currency} </button>
+                </div>
+                <table {...getTableProps()}>
+                    <thead>
+                    { headerGroups.map((headerGroup) => (
+                        <tr {...headerGroup.getHeaderGroupProps()}> 
+                        {
+                            headerGroup.headers.map((column) => (
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                    {column.render('Header')}
+                                    <span className="sortIcon">
+                                        {column.isSorted ? (column.isSortedDesc ? <TiArrowSortedUp />: <TiArrowSortedDown />) : ''}
+                                    </span>
+                                </th>
+                            ))
+                        }
                     </tr>
-                )
-            })}
-            </tbody>
-        </table>
-    
-        :<p></p>}</div>
-   )
+                    ))}
+                    </thead>
+                    <tbody {...getTableBodyProps()}>
+                    {rows.map(row => {
+                        prepareRow(row)
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map(cell => {
+                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                })}
+                            </tr>
+                        )
+                    })}
+                    </tbody>
+                </table>  
+            </>
+            :<p></p>}
+        </div>
 
+    ) 
 
  }
 
-export default Cointable
+export default Cointable;

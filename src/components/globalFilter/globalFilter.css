@@ -1,0 +1,20 @@
+.search {
+    padding: 0 8px 0 0;
+    display: flex;
+    padding: 10px;
+    width: 90%;
+    border-radius: 6px;
+    border: 0.2px solid lightgray;
+}
+
+.searchInput{
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+    color: darkgray;
+    margin: 0 10px;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
