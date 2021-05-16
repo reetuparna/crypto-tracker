@@ -1,5 +1,6 @@
 import React from 'react'
 import './header.css';
+import logo from './../../images/logo.png';
 /**
 * @author
 * @function Header
@@ -8,11 +9,11 @@ import './header.css';
 const Header = (props) => {
   return(
     <div className="header">
-        <div className="title">CryptoTracker</div>
+        <div className="logo"><img src={logo} alt="Logo" width="50" height="50" /></div>
         <div className="nav">
-            <div>Lorem</div>
-            <div>Ipsem</div>
-            <div>Dolor</div>
+            <div className='nav-item'>About Us</div>
+            <div className='nav-item'>Contact Us</div>
+            <div className='nav-item'>Login/Sign Up</div>
         </div>
     </div>
    )
