@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { useSortBy, useTable } from 'react-table';
+import { useGlobalFilter, useSortBy, useTable } from 'react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 import './table.css';
 import {cols} from './columns';
+import GlobalFilter from './globalFilter/globalFilter';
 /**
 * @author
 * @function Cointable
@@ -12,7 +13,7 @@ import {cols} from './columns';
 
 const Cointable = (props) => {
 
-    const { coinData } = props;
+    const { coinData, currency } = props;
 
     const columns = React.useMemo(()=> cols, []);
 
@@ -24,13 +25,31 @@ const Cointable = (props) => {
       headerGroups,
       rows,
       prepareRow,
-    } = useTable({
+      state,
+      setGlobalFilter,
+    } = useTable(
+        {
             columns,
             data
-        }, useSortBy);
+        }, 
+        useGlobalFilter,
+        useSortBy
+    );
 
-  return(
-    <div className="tableContainer">{data!=undefined ?
+    const { globalFilter } = state;
+
+    function handleChange() {
+        const newValue = currency=="USD"?"INR":"USD";
+        props.onChange(newValue);
+    }
+
+    return(
+
+        <div className="tableContainer">{data!=undefined ?
+        
+        <> 
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        
         
         <table {...getTableProps()}>
             <thead>
@@ -62,10 +81,10 @@ const Cointable = (props) => {
             })}
             </tbody>
         </table>
-    
+        </>
         :<p></p>}</div>
-   )
 
+    ) 
 
  }
 
