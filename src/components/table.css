@@ -32,5 +32,17 @@ tr:hover {
     display: flex;
     justify-content: space-between;
     width: 90%;
-    margin: 0 auto;
+    margin: 0 50px;
+}
+
+.currency-dropdown{
+    padding: 10px;
+    width: 9.5%;
+    border-radius: 6px;
+    border: 0.2px solid lightgray;
+
+}
+
+select{
+    border:none;
 }

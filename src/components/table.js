@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { useGlobalFilter, useSortBy, useTable } from 'react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
@@ -6,6 +6,7 @@ import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import './table.css';
 import {cols} from './columns';
 import GlobalFilter from './globalFilter/globalFilter';
+
 /**
 * @author
 * @function Cointable
@@ -18,6 +19,8 @@ const Cointable = (props) => {
     const columns = React.useMemo(()=> cols, []);
 
     const data = React.useMemo(() => coinData, [coinData]);
+
+    const options = ["USD", "INR"];
     
     const {
       getTableProps,
@@ -38,9 +41,8 @@ const Cointable = (props) => {
 
     const { globalFilter } = state;
 
-    function handleChange() {
-        const newValue = currency==='USD'?'INR':'USD';
-        props.onChange(newValue);
+    function handleChange(e) {
+        props.onChange(e.target.value);
     }
 
     return(
@@ -50,7 +52,14 @@ const Cointable = (props) => {
             <> 
                 <div className='filter-wrapper'>
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-                    <button onClick={handleChange}> {currency} </button>
+                    <div className="currency-dropdown">
+                        <select  
+                        defaultValue={currency} 
+                        onChange={handleChange} >
+                            <option value="USD">USD</option>
+                            <option value="INR">INR</option>
+                        </select>
+                    </div>
                 </div>
                 <table {...getTableProps()}>
                     <thead>
