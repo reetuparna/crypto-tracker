@@ -1,6 +1,6 @@
 export const cols = [
   {
-    Header: 'Logo',  
+    Header: '',  
     accessor: 'image',
     Cell: ({ cell: { value } }) => (
       <img

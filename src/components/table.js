@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { useTable } from 'react-table';
+import { useSortBy, useTable } from 'react-table';
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+
 import './table.css';
 import {cols} from './columns';
 /**
@@ -16,19 +18,16 @@ const Cointable = (props) => {
 
     const data = React.useMemo(() => coinData, []);
     
-    const tableInstance = useTable({
-        columns,
-        data
-    })
-    
-  const {
+    const {
       getTableProps,
       getTableBodyProps,
       headerGroups,
       rows,
       prepareRow,
-  } = tableInstance 
-
+    } = useTable({
+            columns,
+            data
+        }, useSortBy);
 
   return(
     <div className="tableContainer">{data!=undefined ?
@@ -39,7 +38,12 @@ const Cointable = (props) => {
                 <tr {...headerGroup.getHeaderGroupProps()}> 
                 {
                     headerGroup.headers.map((column) => (
-                        <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                        <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                            {column.render('Header')}
+                            <span className="sortIcon">
+                                {column.isSorted ? (column.isSortedDesc ? <TiArrowSortedUp />: <TiArrowSortedDown />) : ''}
+                            </span>
+                        </th>
                     ))
                 }
             </tr>
