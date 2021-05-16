@@ -7,7 +7,6 @@ import Header from './components/header/header';
 function App() {
 
   const [coins, setCoins] = useState([]);
-
   const [currency, setCurrency] = useState('USD');
 
   useEffect(() => {
@@ -19,19 +18,16 @@ function App() {
           })
           .catch(error => console.log(error));
 
-  }, [ currency ]);
+  }, [currency]);
 
   function handleChange(newValue) {
-    console.log("new currency : ", newValue)
     setCurrency(newValue);
-    console.log(currency);
   }
 
   return (
     <div className="App">
       <Header />
-      {coins.length==0?<p></p>:<Cointable coinData={coins} currency={currency} onChange={handleChange}/>}
-      
+      {coins.length===0?<p></p>:<Cointable coinData={coins} currency={currency} onChange={handleChange}/>}
     </div>
   );
 }
