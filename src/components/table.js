@@ -49,7 +49,7 @@ const Cointable = (props) => {
         
         <> 
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        
+        <button onClick={handleChange}> {currency} </button>
         
         <table {...getTableProps()}>
             <thead>
