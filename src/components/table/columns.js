@@ -26,5 +26,23 @@ export const cols = [
     Header: 'Rank',  
     accessor: 'market_cap_rank',
     Cell: ({ cell: {value}}) => {return `#${value}`}
+  },
+  {
+    Header: '24h delta',
+    accessor: 'price_change_24h',
+    // not working
+    getProps: (state, rowInfo, column) => {
+      return {
+          style: {
+              background: rowInfo && rowInfo.value >= 0 ? 'green' : 'red',
+          },
+      };
+    },
+    //working
+    Cell: ({ cell: {value}}) => {
+      var m = Number((Math.abs(value) * 100).toPrecision(15));
+      return Math.round(m) / 100 * Math.sign(value);
+    }
   }
+
 ];

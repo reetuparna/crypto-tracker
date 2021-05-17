@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Cointable from './components/table';
-
+import Cointable from './components/table/table';
 import Header from './components/header/header';
 
 function App() {

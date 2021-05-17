@@ -46,3 +46,8 @@ tr:hover {
 select{
     border:none;
 }
+
+.pagination-div{
+    display: inline-flex;
+    margin: 0 20px;
+}

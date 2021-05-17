@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useGlobalFilter, useSortBy, useTable } from 'react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import Pagination from "@material-ui/lab/Pagination";
 
 import './table.css';
 import {cols} from './columns';
-import GlobalFilter from './globalFilter/globalFilter';
+import GlobalFilter from '../globalFilter/globalFilter';
 
 /**
 * @author
@@ -16,27 +17,29 @@ const Cointable = (props) => {
 
     const [coins, setCoins] = useState([]);
     const [currency, setCurrency] = useState('USD');
+    const [page, setPage] = useState(1);
 
     const columns = React.useMemo(()=> cols, []);
-
     const data = React.useMemo(() => coins, [coins]);
 
     const options = ["USD", "INR"];
+    const pageSize = 10;
 
     useEffect(() => {
         axios
-       .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=10&page=1&sparkline=false`)
+       .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${pageSize}&page=${page}&sparkline=false&price_change_percentage=24h`)
        .then(res => {
          setCoins(res.data);
          console.log(coins);
        })
        .catch(error => console.log(error));
 
-    }, [currency]);
+    }, [currency, page]);
     
     const {
       getTableProps,
       getTableBodyProps,
+      getProps,
       headerGroups,
       rows,
       prepareRow,
@@ -52,10 +55,6 @@ const Cointable = (props) => {
     );
 
     const { globalFilter } = state;
-
-    function handleChange(e) {
-        props.onChange(e.target.value);
-    }
 
     return(
 
@@ -73,6 +72,7 @@ const Cointable = (props) => {
                         </select>
                     </div>
                 </div>
+
                 <table {...getTableProps()}>
                     <thead>
                     { headerGroups.map((headerGroup) => (
@@ -96,13 +96,24 @@ const Cointable = (props) => {
                         return (
                             <tr {...row.getRowProps()}>
                                 {row.cells.map(cell => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    
+                                    return <td {...cell.getCellProps()} >{cell.render('Cell')}</td>
                                 })}
                             </tr>
                         )
                     })}
                     </tbody>
                 </table>  
+                
+                <div className="pagination-div">
+                    <Pagination
+                        page={page}
+                        count={5}
+                        variant="outlined"
+                        shape="rounded"
+                        onChange={(e, v)=>setPage(v)}
+                    />   
+                </div>
             </>
             :<p></p>}
         </div>
