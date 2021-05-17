@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.container{
+  padding:1%;
+}
+
+.table-panel-container{
+  display: flex;
+    padding: 2%;
+    justify-content: space-between;
+}

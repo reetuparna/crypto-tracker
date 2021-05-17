@@ -4,15 +4,16 @@
 }
 
 .tableContainer{
-    margin: 10%;
+    width: 74%;
 }
 
 table{
-    width: 90%;
-    margin: 20px 50px;
+    width: 100%;
+    margin: 20px 0px;
     border-radius: 8px;
     font-size: 14px;
-    border: 0.2px solid lightgray;
+    /* border: 0.2px solid lightgray; */
+    box-shadow: rgb(0 0 0 / 4%) 0px 0px 23px 0px;
 }
 
 tr{
@@ -29,10 +30,10 @@ tr:hover {
 }
 
 .filter-wrapper {
+    padding: 0 2px;
     display: flex;
     justify-content: space-between;
-    width: 90%;
-    margin: 0 50px;
+    width: 100%;
 }
 
 .currency-dropdown{

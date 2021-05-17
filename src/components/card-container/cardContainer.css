@@ -1,0 +1,6 @@
+.card-container{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 2% 2% 0;
+}
