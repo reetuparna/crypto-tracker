@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import { useGlobalFilter, useSortBy, useTable } from 'react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
@@ -14,13 +14,25 @@ import GlobalFilter from './globalFilter/globalFilter';
 
 const Cointable = (props) => {
 
-    const { coinData, currency } = props;
+    const [coins, setCoins] = useState([]);
+    const [currency, setCurrency] = useState('USD');
 
     const columns = React.useMemo(()=> cols, []);
 
-    const data = React.useMemo(() => coinData, [coinData]);
+    const data = React.useMemo(() => coins, [coins]);
 
     const options = ["USD", "INR"];
+
+    useEffect(() => {
+        axios
+       .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=10&page=1&sparkline=false`)
+       .then(res => {
+         setCoins(res.data);
+         console.log(coins);
+       })
+       .catch(error => console.log(error));
+
+    }, [currency]);
     
     const {
       getTableProps,
@@ -55,7 +67,7 @@ const Cointable = (props) => {
                     <div className="currency-dropdown">
                         <select  
                         defaultValue={currency} 
-                        onChange={handleChange} >
+                        onChange={(e)=>setCurrency(e.target.value)} >
                             <option value="USD">USD</option>
                             <option value="INR">INR</option>
                         </select>
