@@ -8,21 +8,14 @@ import './table.css';
 import {cols} from './columns';
 import GlobalFilter from '../globalFilter/globalFilter';
 
-/**
-* @author
-* @function Cointable
-**/
-
 const Cointable = (props) => {
 
     const [coins, setCoins] = useState([]);
     const [currency, setCurrency] = useState('USD');
     const [page, setPage] = useState(1);
-
     const columns = React.useMemo(()=> cols, []);
     const data = React.useMemo(() => coins, [coins]);
 
-    const options = ["USD", "INR"];
     const pageSize = 10;
 
     useEffect(() => {
