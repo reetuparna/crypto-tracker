@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import rootReducer from './reducers';
 
 const store = createStore(rootReducer);
+//store.dispatch({ type: 'FETCH_INIT_DATA_ACTION' });
 
 ReactDOM.render(
   <React.StrictMode>

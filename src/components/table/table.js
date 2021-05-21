@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import { useGlobalFilter, useSortBy, useTable } from 'react-table';
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
@@ -8,22 +9,25 @@ import './table.css';
 import {cols} from './columns';
 import GlobalFilter from '../globalFilter/globalFilter';
 
+
 const Cointable = (props) => {
 
-    const [coins, setCoins] = useState([]);
-    const [currency, setCurrency] = useState('USD');
-    const [page, setPage] = useState(1);
+    const coins = useSelector((state) => state.coins);
+    const currency = useSelector((state) => state.currency);
+    const page = useSelector((state) => state.page);
+
     const columns = React.useMemo(()=> cols, []);
     const data = React.useMemo(() => coins, [coins]);
 
     const pageSize = 10;
+    const dispatch = useDispatch();
 
     useEffect(() => {
         axios
        .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${pageSize}&page=${page}&sparkline=false&price_change_percentage=24h`)
        .then(res => {
-         setCoins(res.data);
-         console.log(coins);
+            dispatch({type: 'UPDATE_COINS', value: res.data});
+            console.log(coins);
        })
        .catch(error => console.log(error));
 
@@ -59,7 +63,7 @@ const Cointable = (props) => {
                     <div className="currency-dropdown">
                         <select  
                         defaultValue={currency} 
-                        onChange={(e)=>setCurrency(e.target.value)} >
+                        onChange={e => dispatch({type:'CURRENCY_UPDATED',value: e.target.value}) } >
                             <option value="USD">USD</option>
                             <option value="INR">INR</option>
                         </select>
@@ -104,7 +108,7 @@ const Cointable = (props) => {
                         count={5}
                         variant="outlined"
                         shape="rounded"
-                        onChange={(e, v)=>setPage(v)}
+                        onChange={(e, v)=>dispatch({type:'PAGE_UPDATED',value:v})}
                     />   
                 </div>
             </>
