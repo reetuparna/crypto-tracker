@@ -15,19 +15,26 @@ const Cointable = (props) => {
     const coins = useSelector((state) => state.coins);
     const currency = useSelector((state) => state.currency);
     const page = useSelector((state) => state.page);
+    const dispatch = useDispatch();
 
     const columns = React.useMemo(()=> cols, []);
     const data = React.useMemo(() => coins, [coins]);
 
     const pageSize = 10;
-    const dispatch = useDispatch();
+    
+    function formatData(data) {
+        return data.map(d => {
+            var m = Number((Math.abs(d.price_change_percentage_24h) * 100).toPrecision(15));
+            const percentage = Math.round(m) / 100 * Math.sign(d.price_change_percentage_24h);
+            return {...d, price_change_percentage_24h:percentage};
+        });
+    };
 
     useEffect(() => {
         axios
        .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${pageSize}&page=${page}&sparkline=false&price_change_percentage=24h`)
        .then(res => {
-            dispatch({type: 'UPDATE_COINS', value: res.data});
-            console.log(coins);
+            dispatch({type: 'UPDATE_COINS', value: formatData(res.data)});
        })
        .catch(error => console.log(error));
 

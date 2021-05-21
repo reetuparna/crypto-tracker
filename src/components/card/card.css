@@ -1,11 +1,55 @@
 .card {
+    color:#606060;
     min-width: 24%;
     border-radius: 8px;
-    padding: 20px;
+    padding: 1.5% 2%;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 23px 5px;
     cursor:pointer;
+    display: flex;
 }
 
 .card:hover{
     box-shadow: rgb(0 0 0 / 10%) 0px 10px 23px 10px;
+}
+
+.card-info, .card-graph{
+    width:50%;
+}
+
+.name-container, .price, .delta{
+    
+}
+.name-container{
+    padding: 0 0 5%;
+    display: flex;
+    text-align: start;
+    font-size: 14px;
+    font-weight: bold;
+}
+.price{
+    padding: 0 0 5%;
+    display: flex;
+    text-align: start;
+    font-weight: bold;
+}
+
+.delta-negative{
+    padding: 0 0 5%;
+    display: flex;
+    text-align: start;
+    font-weight: bolder;
+    color: #F6465D;
+}
+
+.delta-positive{
+    padding: 0 0 5%;
+    display: flex;
+    text-align: start;
+    font-weight: bolder;
+    color: green;
+}
+
+.symbol{
+    width:20px;
+    margin: 0 3px;
 }

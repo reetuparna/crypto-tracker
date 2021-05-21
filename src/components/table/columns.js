@@ -10,8 +10,8 @@ export const cols = [
     )
   },
   {  
-  Header: 'Symbol',  
-  accessor: 'symbol' ,
+    Header: 'Symbol',  
+    accessor: 'symbol' ,
     Cell: ({ cell: {value}}) => value.toUpperCase()
   },
   {  
@@ -29,7 +29,7 @@ export const cols = [
   },
   {
     Header: '24h delta',
-    accessor: 'price_change_24h',
+    accessor: 'price_change_percentage_24h',
     // not working
     getProps: (state, rowInfo, column) => {
       return {
@@ -38,11 +38,7 @@ export const cols = [
           },
       };
     },
-    //working
-    Cell: ({ cell: {value}}) => {
-      var m = Number((Math.abs(value) * 100).toPrecision(15));
-      return Math.round(m) / 100 * Math.sign(value);
-    }
+
   }
 
 ];

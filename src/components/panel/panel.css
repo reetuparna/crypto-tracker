@@ -1,11 +1,10 @@
 .panel{
-    height: 680px;
-    width: 23.5%;
+    height: 667px;
+    width: 24%;
     border-radius: 8px;
     padding: 20px;
-    margin: 0 20px 0 0;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 23px 5px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .card:hover{
