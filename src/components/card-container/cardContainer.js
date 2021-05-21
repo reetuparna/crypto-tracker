@@ -24,6 +24,7 @@ const CardContainer = (props) => {
           current_price={topCard.current_price}
           price_change_percentage_24h={topCard.price_change_percentage_24h}
           image={topCard.image}
+          total_volume={topCard.total_volume}
         />;
       })}
     </div>

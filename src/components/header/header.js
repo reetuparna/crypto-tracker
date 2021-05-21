@@ -9,7 +9,8 @@ import logo from './../../images/logo.png';
 const Header = (props) => {
   return(
     <div className="header">
-        <div className="logo"><img src={logo} alt="Logo" width="50" height="50" /></div>
+        {/* <div className="logo"><img src={logo} alt="Logo" width="50" height="50" /></div> */}
+        <div className="logo-name">BLOCKCHAINED</div>
         <div className="nav">
             <div className='nav-item'>About Us</div>
             <div className='nav-item'>Contact Us</div>

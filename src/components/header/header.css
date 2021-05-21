@@ -10,6 +10,12 @@
     padding-left: 8px;
 }
 
+.logo-name{
+    font-family: 'Orbitron', sans-serif;
+    padding: 15px;
+    color: #F28449;
+}
+
 .nav {
     display: flex;
     padding: 2px;
