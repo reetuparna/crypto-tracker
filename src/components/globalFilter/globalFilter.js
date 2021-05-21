@@ -10,7 +10,7 @@ const GlobalFilter = ({filter, setFilter}) => {
   return(
     <div className='search'>
       <BsSearch />
-      <input onClick={(()=>dispatch({type: 'TEST', value:'Now Type Anything....'}))} placeholder={test} className="searchInput" value={filter || ''} onChange = {e => setFilter(e.target.value)} />
+      <input onClick={(()=>dispatch({type: 'TEST', value:'Type Anything....'}))} placeholder={test} className="searchInput" value={filter || ''} onChange = {e => setFilter(e.target.value)} />
     </div>
    )
 }
