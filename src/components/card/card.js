@@ -21,7 +21,6 @@ const Card = ({id, name, image, current_price, price_change_percentage_24h}) => 
       axios
           .get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=7&interval=daily`)
           .then(res => {
-              
               dispatch(
                 {
                     type:"SPARKLINE_UPDATED", 
