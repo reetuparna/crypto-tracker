@@ -22,7 +22,7 @@ tr{
 }
 
 tr:hover {
-    background-color: #f8fafd;
+    background-color: rgba(230, 249, 255, 0.4);
 }
 
 .sortIcon{

@@ -12,9 +12,9 @@ const Header = (props) => {
         {/* <div className="logo"><img src={logo} alt="Logo" width="50" height="50" /></div> */}
         <div className="logo-name">BLOCKCHAINED</div>
         <div className="nav">
-            <div className='nav-item'>About Us</div>
-            <div className='nav-item'>Contact Us</div>
-            <div className='nav-item'>Login/Sign Up</div>
+            <div className='nav-item'>ABOUT US</div>
+            <div className='nav-item'>CONTACT US</div>
+            <div className='nav-item'>LOGIN/SIGN UP</div>
         </div>
     </div>
    )

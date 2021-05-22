@@ -1,12 +1,13 @@
 .header{
     position: fixed;
-    padding: 8px 16px;
+    padding: 8px 24px;
     box-shadow: 0px 0px 20px rgb(0 0 0 / 8%);
     font-size: 20px;
     display: flex;
     justify-content: space-between;
     width: 100%;
     background: white;
+    
 }
 
 .logo {
@@ -29,6 +30,8 @@
 .nav-item {
     padding-right: 16px;
     font-size: 14px;
+    FONT-WEIGHT: 500;
+    COLOR: #737373;
 }
 
 .nav-item:hover{

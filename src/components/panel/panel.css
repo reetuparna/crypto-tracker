@@ -22,6 +22,10 @@
     cursor: pointer;
 }
 
+.news-item:hover{
+    background:rgba(230, 249, 255, 0.4);
+}
+
 .news-text{
     font-family: 'Roboto';
     width: 85%;
