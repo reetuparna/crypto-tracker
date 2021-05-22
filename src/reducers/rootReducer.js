@@ -17,7 +17,6 @@ const rootReducer = (state=initialState, action) => {
         case 'PAGE_UPDATED':
             return { ...state, page: action.value };
         case 'SPARKLINE_UPDATED':
-            
             return {...state, cardData: updateSparklineForId(state.cardData, action.value) }
         default:
             return state;
@@ -27,19 +26,19 @@ const rootReducer = (state=initialState, action) => {
 function updateSparklineForId(oldCardData, updatedDataForId){
 
     const id=updatedDataForId.id;
-    const prices=updatedDataForId.prices;
+    const data_7d=updatedDataForId.data_7d;
     let newCardData = [];
     Object.assign(newCardData,oldCardData);
+    const found = newCardData.find(obj=>obj.id==id);
 
-    if(newCardData.includes(id)){
-        newCardData[id].prices = prices;
+    if(found != undefined){
+        found.data_7d = data_7d;
     } else {
         newCardData.push({
             id: id,
-            prices: prices,
+            data_7d: data_7d,
         });
     }
-    
     return newCardData;
 }
 

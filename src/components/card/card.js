@@ -13,7 +13,7 @@ import './card.css';
 const Card = ({id, name, image, current_price, price_change_percentage_24h}) => {
 
   const currency = useSelector(state =>  state.currency);
-  const cardData = useSelector(state => state.cardData.filter(o => o.id==id));
+  const cardData = useSelector(state => state.cardData.find(obj => obj.id==id));
 
   const dispatch = useDispatch();
 
@@ -23,20 +23,18 @@ const Card = ({id, name, image, current_price, price_change_percentage_24h}) => 
           .then(res => {
               
               dispatch(
-                  {
+                {
                     type:"SPARKLINE_UPDATED", 
                     value: {
                       id: id,
-                      prices: res.data,
+                      data_7d: res.data,
                     }
-                  })
+                })
           })
           .catch(error => console.log(error))
   }, [currency, id]);
 
-
-  console.log(cardData);
-  setTimeout(console.log(cardData),2000);
+  
   return(
     <div className="card">
       
@@ -53,7 +51,7 @@ const Card = ({id, name, image, current_price, price_change_percentage_24h}) => 
       </div>
 
       <div className="card-graph">
-        {!!cardData && !!cardData[id]?<LineChart sparkline={cardData[id]}/>:<p></p>}
+        {cardData!=undefined?<LineChart sparkline={cardData}/>:<p></p>}
       </div>
 
     </div>

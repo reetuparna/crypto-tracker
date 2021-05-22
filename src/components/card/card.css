@@ -12,8 +12,13 @@
     box-shadow: rgb(0 0 0 / 10%) 0px 10px 23px 10px;
 }
 
-.card-info, .card-graph{
-    width:50%;
+.card-info {
+    padding: 5% 0 0;
+    width:40%;
+}
+
+.card-graph {
+    width:60%;
 }
 
 .name-container, .price, .delta{
