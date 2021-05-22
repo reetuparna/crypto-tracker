@@ -2,8 +2,8 @@ const initialState = {
     test: 'Click Here',
     coins: [],
     currency: 'INR',
-    page: 1
-
+    page: 1,
+    cardData : []
 };
 
 const rootReducer = (state=initialState, action) => {
@@ -16,9 +16,31 @@ const rootReducer = (state=initialState, action) => {
             return { ...state, currency: action.value };
         case 'PAGE_UPDATED':
             return { ...state, page: action.value };
+        case 'SPARKLINE_UPDATED':
+            
+            return {...state, cardData: updateSparklineForId(state.cardData, action.value) }
         default:
             return state;
     }
+}
+
+function updateSparklineForId(oldCardData, updatedDataForId){
+
+    const id=updatedDataForId.id;
+    const prices=updatedDataForId.prices;
+    let newCardData = [];
+    Object.assign(newCardData,oldCardData);
+
+    if(newCardData.includes(id)){
+        newCardData[id].prices = prices;
+    } else {
+        newCardData.push({
+            id: id,
+            prices: prices,
+        });
+    }
+    
+    return newCardData;
 }
 
 export default rootReducer;

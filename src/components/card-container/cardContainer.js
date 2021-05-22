@@ -20,7 +20,7 @@ const CardContainer = (props) => {
       {top4.map(topCard => {
         return <Card 
           name={topCard.name}
-          symbol={topCard.symbol}
+          id={topCard.id}
           current_price={topCard.current_price}
           price_change_percentage_24h={topCard.price_change_percentage_24h}
           image={topCard.image}
