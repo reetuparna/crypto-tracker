@@ -3,6 +3,8 @@ const initialState = {
     coins: [],
     currency: 'INR',
     page: 1,
+    newsApiKey: '58bcb88e28ed47efb16aa08ad5721758',
+    newsDataArray: [],
     cardData : []
 };
 
@@ -18,6 +20,8 @@ const rootReducer = (state=initialState, action) => {
             return { ...state, page: action.value };
         case 'SPARKLINE_UPDATED':
             return {...state, cardData: updateSparklineForId(state.cardData, action.value) }
+        case 'SET_NEWS_DATA':
+            return { ...state, newsDataArray: action.value };
         default:
             return state;
     }

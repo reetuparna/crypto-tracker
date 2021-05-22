@@ -51,7 +51,7 @@ const Card = ({id, name, image, current_price, price_change_percentage_24h}) => 
       </div>
 
       <div className="card-graph">
-        {cardData!=undefined?<LineChart sparkline={cardData}/>:<p></p>}
+        {cardData!== undefined?<LineChart sparkline={cardData}/>:<p></p>}
       </div>
 
     </div>
