@@ -1,5 +1,5 @@
 .panel{
-    height: 667px;
+    height: 669px;
     width: 24%;
     border-radius: 8px;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 23px 5px;
@@ -10,7 +10,7 @@
     box-shadow: rgb(0 0 0 / 10%) 0px 10px 23px 0px;
 }
 .news-list{
-    padding: 16px 0 0 0;
+    padding: 8px 0 0 0;
 }
 .news-item {
     font-size: 14px;
@@ -47,8 +47,8 @@
     align-items: center;
 }
 .panel-head {
-    margin-bottom: 0;
-    font-weight: 300;
+    font-weight: 500;
+    color: lightslategrey;
 }
 
 .author {
