@@ -6,6 +6,7 @@ export const cols = [
       <img
         src={value}
         width={30}
+        alt=""
       />
     )
   },

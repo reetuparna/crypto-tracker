@@ -13,10 +13,11 @@ import './card.css';
 const Card = ({id, name, image, current_price, price_change_percentage_24h}) => {
 
   const currency = useSelector(state =>  state.currency);
-  const cardData = useSelector(state => state.cardData.find(obj => obj.id==id));
+  const cardData = useSelector(state => state.cardData.find(obj => obj.id===id));
 
   const dispatch = useDispatch();
 
+  // eslint-disable-next-line
   useEffect(() => {
       axios
           .get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=7&interval=daily`)
@@ -31,7 +32,7 @@ const Card = ({id, name, image, current_price, price_change_percentage_24h}) => 
                 })
           })
           .catch(error => console.log(error))
-  }, [currency, id]);
+  }, [currency, id, dispatch]);
 
   
   return(
@@ -41,7 +42,7 @@ const Card = ({id, name, image, current_price, price_change_percentage_24h}) => 
         <div className="name-container">
           {/* <div> {symbol}</div> */}
           <div>{name}</div>
-          <img src={image} className="symbol"/>
+          <img src={image} className="symbol" alt=""/>
         </div>
         <div className="price">{current_price}</div>
         <div className="delta">

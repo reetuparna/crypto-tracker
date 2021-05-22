@@ -30,6 +30,7 @@ const Cointable = (props) => {
         });
     };
 
+    // eslint-disable-next-line
     useEffect(() => {
         axios
        .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${pageSize}&page=${page}&sparkline=false&price_change_percentage=24h`)
@@ -38,12 +39,11 @@ const Cointable = (props) => {
        })
        .catch(error => console.log(error));
 
-    }, [currency, page]);
+    }, [currency, page, dispatch]);
     
     const {
       getTableProps,
       getTableBodyProps,
-      getProps,
       headerGroups,
       rows,
       prepareRow,
@@ -80,6 +80,7 @@ const Cointable = (props) => {
 
                 <table {...getTableProps()}>
                     <thead>
+                        
                     { headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}> 
                         {

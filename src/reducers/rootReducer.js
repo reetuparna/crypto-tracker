@@ -35,9 +35,9 @@ function updateSparklineForId(oldCardData, updatedDataForId){
     const data_7d=updatedDataForId.data_7d;
     let newCardData = [];
     Object.assign(newCardData,oldCardData);
-    const found = newCardData.find(obj=>obj.id==id);
+    const found = newCardData.find(obj=>obj.id===id);
 
-    if(found != undefined){
+    if(found !== undefined){
         found.data_7d = data_7d;
     } else {
         newCardData.push({

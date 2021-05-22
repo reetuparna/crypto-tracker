@@ -1,6 +1,6 @@
 import React from 'react'
 import './header.css';
-import logo from './../../images/logo.png';
+
 /**
 * @author
 * @function Header

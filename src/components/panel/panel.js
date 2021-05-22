@@ -12,11 +12,12 @@ const Panel = (props) => {
   const dispatch = useDispatch();
   const newsApiKey = useSelector(state => state.newsApiKey);
   
+  // eslint-disable-next-line
   useEffect(() => {
     axios.get(`https://newsapi.org/v2/everything?q=crypto&pageSize=7&apiKey=${newsApiKey}`).then((response)=>{
       dispatch({type: 'SET_NEWS_DATA', value: response.data.articles})
     })
-  }, []);
+  }, [newsApiKey, dispatch]);
   
   const newsDataArray = useSelector(state => state.newsDataArray)
   return(
