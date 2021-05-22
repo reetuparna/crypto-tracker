@@ -1,10 +1,12 @@
+import { MOCK_NEWS_DATA } from '../mocks/news-mock';
+
 const initialState = {
     test: 'Click Here',
     coins: [],
     currency: 'INR',
     page: 1,
     newsApiKey: '58bcb88e28ed47efb16aa08ad5721758',
-    newsDataArray: [],
+    newsDataArray: MOCK_NEWS_DATA,
     cardData : []
 };
 
