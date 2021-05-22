@@ -3,7 +3,6 @@
     width: 24%;
     border-radius: 8px;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 23px 5px;
-    cursor: pointer;
     overflow: scroll;
 }
 
@@ -20,6 +19,7 @@
     border-radius: 8px;
     padding: 1.5% 2%;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 23px 5px;
+    cursor: pointer;
 }
 
 .news-text{

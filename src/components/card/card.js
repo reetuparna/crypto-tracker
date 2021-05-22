@@ -44,9 +44,12 @@ const Card = ({id, name, image, current_price, price_change_percentage_24h}) => 
           <img src={image} className="symbol"/>
         </div>
         <div className="price">{current_price}</div>
+        <div className="delta">
         <div className={price_change_percentage_24h>=0 ? 'delta-positive' : 'delta-negative' }>
           {price_change_percentage_24h}%
         </div>
+        <div className="delta-duration">24h</div>
+      </div>
       </div>
 
       <div className="card-graph">

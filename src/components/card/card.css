@@ -38,6 +38,9 @@
     font-weight: bold;
 }
 
+.delta{
+    display: flex;
+}
 .delta-negative{
     padding: 0 0 5%;
     display: flex;
@@ -59,4 +62,10 @@
 .symbol{
     width:20px;
     margin: 0 3px;
+}
+
+.delta-duration {
+    padding:5px;
+    font-size: 10px;
+    font-weight: 700;
 }
