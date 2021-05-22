@@ -21,7 +21,7 @@ const Panel = (props) => {
   const newsDataArray = useSelector(state => state.newsDataArray)
   return(
     <div className="panel">
-      {/* <h3 className='panel-head'>Trending</h3> */}
+      <p className='panel-head'>Trending News</p>
       <div className='news-list'>
           { newsDataArray.length > 0 &&
             newsDataArray.map((news)=>{
