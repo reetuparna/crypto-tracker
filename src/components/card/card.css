@@ -44,6 +44,7 @@
     text-align: start;
     font-weight: bolder;
     color: #F6465D;
+    font-size:16px;
 }
 
 .delta-positive{
@@ -52,6 +53,7 @@
     text-align: start;
     font-weight: bolder;
     color: green;
+    font-size: 16px;
 }
 
 .symbol{
