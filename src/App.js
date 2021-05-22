@@ -4,6 +4,7 @@ import Cointable from './components/table/table';
 import Header from './components/header/header';
 import CardContainer from './components/card-container/cardContainer';
 import Panel from './components/panel/panel';
+import Footer from './components/footer/footer';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Cointable />
           <Panel />
         </div>
+        <Footer />
       </div>
       
     </div>
