@@ -5,8 +5,23 @@
     padding: 20px;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 23px 5px;
     cursor: pointer;
+    overflow: scroll;
 }
 
 .card:hover{
     box-shadow: rgb(0 0 0 / 10%) 0px 10px 23px 0px;
+}
+
+.news-item {
+    font-size: 14px;
+    padding: 0 2px 8px 2px;
+}
+
+.panel-head {
+    margin-top: 0;
+}
+
+.author {
+    display: flex;
+    justify-content: flex-end;
 }
