@@ -1,9 +1,12 @@
 .header{
+    position: fixed;
     padding: 8px 16px;
     box-shadow: 0px 0px 20px rgb(0 0 0 / 8%);
     font-size: 20px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    background: white;
 }
 
 .logo {
@@ -13,7 +16,7 @@
 .logo-name{
     font-family: 'Orbitron', sans-serif;
     padding: 15px;
-    color: #F28449;
+    color: #00ace6;
 }
 
 .nav {
@@ -32,3 +35,13 @@
     color: #42576b;
     cursor: pointer;
 }
+
+@media only screen and (max-width:780px) {
+    .header{
+        padding: 0;
+        justify-content: center;
+    }
+    .nav{
+        display: none;
+    }
+  }

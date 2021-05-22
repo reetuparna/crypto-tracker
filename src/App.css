@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   color: #606060;
+  position: absolute;
+  width: 100%;
 }
 
 .App-logo {
@@ -39,11 +41,17 @@
 }
 
 .container{
-  padding:1%;
+  margin-top: 60px;
 }
 
 .table-panel-container{
   display: flex;
     padding: 2%;
     justify-content: space-between;
+}
+
+@media only screen and (max-width:780px) {
+  .table-panel-container{
+      flex-direction: column;
+  }
 }

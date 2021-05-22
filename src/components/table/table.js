@@ -113,7 +113,7 @@ const Cointable = (props) => {
                 <div className="pagination-div">
                     <Pagination
                         page={page}
-                        count={5}
+                        count={10}
                         variant="outlined"
                         shape="rounded"
                         onChange={(e, v)=>dispatch({type:'PAGE_UPDATED',value:v})}
