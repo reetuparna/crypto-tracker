@@ -1,11 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-/**
- * @author
- * @function LineChart
- **/
-
 const LineChart = ({ sparkline }) => {
   function points() {
     let datapoints = [];
@@ -21,11 +16,11 @@ const LineChart = ({ sparkline }) => {
         label: "Price",
         data: points(),
         lineTension: 0.4,
-        pointBackgroundColor: ["#ffcc91"],
-        borderColor: ["#ffcc91"],
+        pointBackgroundColor: ["#8edeff"],
+        borderColor: ["#8edeff"],
         fill: {
           target: "origin",
-          above: "rgba(244, 185, 94, 0.4)",
+          above: "#bae8fb",
         },
       },
     ],

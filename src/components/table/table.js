@@ -68,7 +68,8 @@ const Cointable = (props) => {
                 <div className='filter-wrapper'>
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                     <div className="currency-dropdown">
-                        <select  
+                        <select 
+                        className='currency-select' 
                         defaultValue={currency} 
                         onChange={e => dispatch({type:'CURRENCY_UPDATED',value: e.target.value}) } >
                             <option value="USD">USD</option>
